@@ -1,4 +1,4 @@
-package org.project;
+package org.project.evaluation;
 
 public class MajorEvaluation implements GradeEvaluation {
     @Override

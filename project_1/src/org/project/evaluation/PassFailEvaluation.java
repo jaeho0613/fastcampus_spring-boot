@@ -1,6 +1,6 @@
-package org.project;
+package org.project.evaluation;
 
-public class PassFailEvaluation implements GradeEvaluation{
+public class PassFailEvaluation implements GradeEvaluation {
     @Override
     public String getGrade(int point) {
         if(point >= 70) {

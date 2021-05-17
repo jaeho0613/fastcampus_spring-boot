@@ -1,4 +1,4 @@
-package org.project;
+package org.project.global;
 
 public class Define {
 

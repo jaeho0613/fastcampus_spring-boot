@@ -1,5 +1,12 @@
 package org.project;
 
+import org.project.global.Define;
+import org.project.model.School;
+import org.project.model.Score;
+import org.project.model.Student;
+import org.project.model.Subject;
+import org.project.view.GenerateGradeReport;
+
 public class TestMain {
 
     School goodSchool = School.getInstance();

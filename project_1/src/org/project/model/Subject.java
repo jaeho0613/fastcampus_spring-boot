@@ -1,4 +1,6 @@
-package org.project;
+package org.project.model;
+
+import org.project.global.Define;
 
 import java.util.ArrayList;
 

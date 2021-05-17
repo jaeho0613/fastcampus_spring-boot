@@ -1,4 +1,14 @@
-package org.project;
+package org.project.view;
+
+import org.project.evaluation.GradeEvaluation;
+import org.project.model.School;
+import org.project.evaluation.BasicEvaluation;
+import org.project.evaluation.MajorEvaluation;
+import org.project.evaluation.PassFailEvaluation;
+import org.project.global.Define;
+import org.project.model.Score;
+import org.project.model.Student;
+import org.project.model.Subject;
 
 import java.util.ArrayList;
 
