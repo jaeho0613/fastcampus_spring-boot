@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.service.TodoServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-14T11:32:36" hostname="DESKTOP-BHMTQ7P" time="0.554">
+  <properties/>
+  <testcase name="searchById()" classname="org.example.service.TodoServiceTest" time="0.554"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
