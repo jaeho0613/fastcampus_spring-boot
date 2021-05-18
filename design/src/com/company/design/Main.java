@@ -5,6 +5,7 @@ import com.company.design.faccade.Ftp;
 import com.company.design.faccade.Reader;
 import com.company.design.faccade.SftpClient;
 import com.company.design.faccade.Writer;
+import com.company.design.strategy.*;
 
 public class Main {
 
@@ -92,8 +93,7 @@ public class Main {
         button.click("메세지 전달 : click4");*/
 
         // facade
-
-        // 패턴이 들어가지 않은
+        /*// 패턴이 들어가지 않은
         Ftp ftpClient = new Ftp("www.foo.co.kr", 22, "/home/etc");
         ftpClient.connect();
         ftpClient.moveDirectory();
@@ -115,7 +115,30 @@ public class Main {
         sftpClient.connect();
         sftpClient.write();
         sftpClient.read();
-        sftpClient.disConnect();
+        sftpClient.disConnect();*/
+
+        // Strategy
+        Encoder encoder = new Encoder();
+
+        // base64
+        EncodingStrategy base64 = new Base64Strategy();
+
+        // normal
+        EncodingStrategy normal = new NormalStrategy();
+
+        String message = "hello java";
+
+        encoder.setEncodingStrategy(base64);
+        String base64Result = encoder.getMessage(message);
+        System.out.println(base64Result);
+
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        String appendResult = encoder.getMessage(message);
+        System.out.println(appendResult);
     }
 
     // 콘센트
