@@ -1,11 +1,10 @@
 package com.company.design;
 
 import com.company.design.adpater.Electronic110V;
-import com.company.design.aop.AopBrowser;
-import com.company.design.decorator.*;
-import com.company.design.proxy.IBrowser;
-
-import java.util.concurrent.atomic.AtomicLong;
+import com.company.design.faccade.Ftp;
+import com.company.design.faccade.Reader;
+import com.company.design.faccade.SftpClient;
+import com.company.design.faccade.Writer;
 
 public class Main {
 
@@ -65,7 +64,7 @@ public class Main {
         System.out.println("loading time : " + end.get());*/
 
         // Decorator
-        ICar audi = new Audi(1000);
+        /* ICar audi = new Audi(1000);
         audi.showPrice();
 
         // a3
@@ -78,7 +77,45 @@ public class Main {
 
         // a5
         ICar audi5 = new A5(audi, "A5");
-        audi5.showPrice();
+        audi5.showPrice();*/
+
+        // observer
+        /*Button button = new Button("버튼");
+
+        button.addListener(event -> {
+            System.out.println(event);
+        });
+
+        button.click("메세지 전달 : click1");
+        button.click("메세지 전달 : click2");
+        button.click("메세지 전달 : click3");
+        button.click("메세지 전달 : click4");*/
+
+        // facade
+
+        // 패턴이 들어가지 않은
+        Ftp ftpClient = new Ftp("www.foo.co.kr", 22, "/home/etc");
+        ftpClient.connect();
+        ftpClient.moveDirectory();
+
+        Writer writer = new Writer("text.tmp");
+        writer.fileConnect();
+        writer.write();
+
+        Reader reader = new Reader("text.tmp");
+        reader.fileConnect();
+        reader.fileRead();
+
+        reader.fileDisconnect();
+        writer.fileDisConnect();
+        ftpClient.disConnect();
+
+        // 패턴이 들어간 client
+        SftpClient sftpClient = new SftpClient("www.foo.co.kr", 22, "/home/etc", "text.tmp");
+        sftpClient.connect();
+        sftpClient.write();
+        sftpClient.read();
+        sftpClient.disConnect();
     }
 
     // 콘센트
