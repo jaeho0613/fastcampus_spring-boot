@@ -1,6 +1,6 @@
 package com.example.Controller;
 
-import com.example.dto.User;
+import com.example.dto.GetRequestDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -47,7 +47,7 @@ public class GetApiController {
 
     // http://localhost:8080/api/get/query-param2?name=steve&email=stev@gmail.com&age=30
     @GetMapping("/query-param2")
-    public String queryParam2(User user) {
+    public String queryParam2(GetRequestDto user) {
         System.out.println(user.getName());
         System.out.println(user.getAge());
         System.out.println(user.getEmail());
