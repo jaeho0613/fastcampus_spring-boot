@@ -1,4 +1,4 @@
-`package com.example.validation.dto;
+package com.example.validation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -50,4 +50,3 @@ public class Car {
                 '}';
     }
 }
-`
