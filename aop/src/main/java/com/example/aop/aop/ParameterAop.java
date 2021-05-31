@@ -13,7 +13,6 @@ public class ParameterAop {
 
     @Pointcut("execution(* com.example.aop.controller..*.*(..))")
     private void cut() {
-
     }
 
     @Before("cut()")
