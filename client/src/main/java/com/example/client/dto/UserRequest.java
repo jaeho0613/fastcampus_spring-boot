@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-public class UserResponse {
+public class UserRequest {
     private String name;
     private int age;
 }
