@@ -106,19 +106,17 @@ public class RestTemplateService {
 
         // http body -> object mapper -> json -> rest template -> http body json
 
+        // 서버에 보낼 user 데이터
         UserRequest userRequest = new UserRequest();
         userRequest.setName("jaeho");
         userRequest.setAge(27);
 
+        // 서버에 보낼 req 객체
         Req<UserRequest> req = new Req<>();
-        req.setHeader(
-                new Req.Header()
-        );
+        req.setHeader(new Req.Header());
+        req.setResBody(userRequest);
 
-        req.setResBody(
-                userRequest
-        );
-
+        // 서버에 보낼 request 객체
         RequestEntity<Req<UserRequest>> requestEntity = RequestEntity
                 .post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
