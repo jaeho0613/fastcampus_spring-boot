@@ -39,13 +39,13 @@ abstract public class MemoryDbRepositoryAbstract<T extends MemoryDbEntity> imple
     @Override
     public void deleteById(int index) {
         var optionalEntity = db.stream().filter(it -> it.getIndex() == index).findFirst();
-        if(optionalEntity.isPresent()) {
+        if (optionalEntity.isPresent()) {
             db.remove(optionalEntity.get());
         }
     }
 
     @Override
-    public List<T> listAll() {
+    public List<T> findAll() {
         return db;
     }
 }
