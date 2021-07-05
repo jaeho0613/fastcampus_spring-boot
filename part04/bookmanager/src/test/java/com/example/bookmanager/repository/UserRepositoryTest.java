@@ -10,6 +10,8 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.util.Set;
+
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
@@ -105,5 +107,23 @@ class UserRepositoryTest {
         ExampleMatcher matcher2 = ExampleMatcher.matching().withMatcher("email", contains());
         Example<User> example2 = Example.of(temp, matcher2);
         userRepository.findAll(example2).forEach(System.out::println);
+    }
+
+    @Test
+    void select() {
+//        log.info("{}", userRepository.findByName("martin"));
+//
+//        log.info("{}", userRepository.findByEmail("test@naver.com"));
+//        log.info("{}", userRepository.getByEmail("test@naver.com"));
+//        log.info("{}", userRepository.readByEmail("test@naver.com"));
+//        log.info("{}", userRepository.queryByEmail("test@naver.com"));
+//        log.info("{}", userRepository.searchByEmail("test@naver.com"));
+//        log.info("{}", userRepository.streamByEmail("test@naver.com"));
+//        log.info("{}", userRepository.findUserByEmail("test@naver.com"));
+
+//        log.info("{}", userRepository.findSomthingByEmail("test@naver.com"));
+
+        log.info("{}", userRepository.findTop2ByName("martin"));
+        log.info("{}", userRepository.findFirst2ByName("martin"));
     }
 }
