@@ -64,6 +64,15 @@ class UserRepositoryTest {
 //        userRepository.deleteInBatch(userRepository.findAllById(Lists.newArrayList(1L, 3L, 5L)));
 //        userRepository.deleteAllInBatch();
 //        userRepository.findAll().forEach(System.out::println);
+
+        // ---------------------- update -----------------------
+        // 1. delete와 동일하게 1번 select 하여 데이터를 확인하고 업데이트한다.
+        userRepository.save(new User("david", "david@fastcompus.com"));
+
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setEmail("reDavid@fastcom.com");
+
+        userRepository.save(user);
     }
 
     @Test
