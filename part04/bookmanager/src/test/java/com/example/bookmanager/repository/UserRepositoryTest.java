@@ -5,11 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
@@ -123,7 +125,22 @@ class UserRepositoryTest {
 
 //        log.info("{}", userRepository.findSomthingByEmail("test@naver.com"));
 
-        log.info("{}", userRepository.findTop2ByName("martin"));
-        log.info("{}", userRepository.findFirst2ByName("martin"));
+//        log.info("{}", userRepository.findTop2ByName("martin"));
+//        log.info("{}", userRepository.findFirst2ByName("martin"));
+
+//        log.info("{}", userRepository.findByEmailAndName("test@naver.com","martin"));
+//        log.info("{}", userRepository.findByEmailOrName("test@naver.com","martin"));
+
+//        log.info("{}", userRepository.findByCreateAtAfter(LocalDateTime.now().minusDays(1L)));
+
+//        log.info("{}", userRepository.findByIdAfter(4L));
+//        log.info("{}", userRepository.findByCreateAtGreaterThan(LocalDateTime.now().minusDays(1L)));
+//        log.info("{}", userRepository.findByCreateAtGreaterThanEqual(LocalDateTime.now().minusDays(1L)));
+
+//        log.info("{}", userRepository.findByCreateAtBetween(LocalDateTime.now().minusDays(1L), LocalDateTime.now().plusDays(1L)));
+
+        log.info("{}", userRepository.findByIdBetween(1L, 3L));
+        log.info("{}", userRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L,3L));
+
     }
 }
