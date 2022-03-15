@@ -18,6 +18,9 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserHistoryRepository userHistoryRepository;
+
     @Test
     void crud() {
 
@@ -111,5 +114,44 @@ class UserRepositoryTest {
 
 
         System.out.println(userRepository.findRowRecord().get("gender"));
+    }
+
+    @Test
+    void prePersistTest() {
+        User user = new User();
+        user.setEmail("test@test.com");
+        user.setName("test");
+
+        userRepository.save(user);
+
+        System.out.println(userRepository.findByEmail("test@test.com"));
+    }
+
+    @Test
+    void preUpdateTest() {
+        User user = userRepository.findById(1).orElseThrow(RuntimeException::new);
+
+        System.out.println("as-is : " + user);
+
+        user.setName("tetsssssssssssssssssss");
+        userRepository.save(user);
+
+        System.out.println("to-be : " + userRepository.findAll().get(0));
+    }
+
+    @Test
+    void userHistoryTest() {
+        User user = new User();
+        user.setEmail("test@naver.com");
+        user.setName("test");
+
+        userRepository.save(user);
+
+        user.setName("test-new");
+
+        userRepository.save(user);
+
+        userHistoryRepository.findAll().forEach(System.out::println);
+
     }
 }
