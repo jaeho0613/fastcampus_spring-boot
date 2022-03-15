@@ -1,5 +1,6 @@
 package com.jaeho.springjpamysql.repository;
 
+import com.jaeho.springjpamysql.entity.Gender;
 import com.jaeho.springjpamysql.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +84,32 @@ class UserRepositoryTest {
                 Sort.Order.desc("id"),
                 Sort.Order.desc("email")
         );
+    }
+
+    @Test
+    void insertAndUpdateTest() {
+        User user = new User();
+        user.setName("jaeho");
+        user.setEmail("jaeho@gogogo.com");
+
+        userRepository.save(user);
+
+        User user2 = userRepository.findById(1).orElseThrow(RuntimeException::new);
+        user2.setName("testsssssssssssssss");
+
+        userRepository.save(user2);
+    }
+
+    @Test
+    void enumTest() {
+        User user = userRepository.findById(1).orElseThrow(RuntimeException::new);
+        user.setGender(Gender.MALE);
+
+        userRepository.save(user);
+
+        userRepository.findAll().forEach(System.out::println);
+
+
+        System.out.println(userRepository.findRowRecord().get("gender"));
     }
 }

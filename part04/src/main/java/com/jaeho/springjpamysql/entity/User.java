@@ -13,11 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Builder
+@Table(name = "user", indexes = {@Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class User {
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
 
     @NonNull
     private String name;
@@ -25,11 +28,16 @@ public class User {
     @NonNull
     private String email;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", insertable = false)
     private LocalDateTime updatedAt;
+
+
+
+//    @Transient
+//    private String testData;
 
 //    @OneToMany(fetch = FetchType.EAGER)
 //    private List<Address> address;
