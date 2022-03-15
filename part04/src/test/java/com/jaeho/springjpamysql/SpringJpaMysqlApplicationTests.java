@@ -1,10 +1,10 @@
-package com.example.bookmanager;
+package com.jaeho.springjpamysql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookmanagerApplicationTests {
+class SpringJpaMysqlApplicationTests {
 
     @Test
     void contextLoads() {
