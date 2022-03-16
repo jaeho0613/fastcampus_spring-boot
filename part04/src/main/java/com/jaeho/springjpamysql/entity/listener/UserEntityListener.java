@@ -5,12 +5,12 @@ import com.jaeho.springjpamysql.entity.UserHistory;
 import com.jaeho.springjpamysql.repository.UserHistoryRepository;
 import com.jaeho.springjpamysql.support.BeanUtils;
 
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
 
 public class UserEntityListener {
-    @PrePersist
-    @PreUpdate
+    @PostPersist
+    @PostUpdate
     public void prePersistAndUpdate(Object o) {
         UserHistoryRepository userHistoryRepository = BeanUtils.getBean(UserHistoryRepository.class);
 

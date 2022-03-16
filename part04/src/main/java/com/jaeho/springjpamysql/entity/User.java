@@ -1,15 +1,12 @@
 package com.jaeho.springjpamysql.entity;
 
 import com.jaeho.springjpamysql.entity.listener.Auditable;
-import com.jaeho.springjpamysql.entity.listener.MyEntityListener;
 import com.jaeho.springjpamysql.entity.listener.UserEntityListener;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,7 +17,6 @@ import java.time.LocalDateTime;
 @EntityListeners(value = UserEntityListener.class)
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-//@Table(name = "user", indexes = {@Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class User extends BaseEntity implements Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,22 +31,8 @@ public class User extends BaseEntity implements Auditable {
     @NonNull
     private String email;
 
-//    @Column(name = "created_at", updatable = false)
-//    @CreatedDate
-//    private LocalDateTime createdAt;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private List<UserHistory> userHistories = new ArrayList<>();
 
-    //    @Column(name = "updated_at", insertable = false)
-//    @LastModifiedDate
-//    private LocalDateTime updatedAt;
-
-//    @PrePersist
-//    public void perPersist() {
-//        this.createdAt = LocalDateTime.now();
-//        this.updatedAt = LocalDateTime.now();
-//    }
-//
-//    @PreUpdate
-//    public void PreUpdate() {
-//        this.updatedAt = LocalDateTime.now();
-//    }
 }

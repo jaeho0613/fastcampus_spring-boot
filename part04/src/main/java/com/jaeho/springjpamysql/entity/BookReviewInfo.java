@@ -12,20 +12,16 @@ import javax.persistence.*;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Book extends BaseEntity {
+public class BookReviewInfo extends BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @OneToOne(optional = false)
+    private Book book;
 
-    private String category;
+    private float averageReviewScore;
 
-    private Long authorId;
-
-    private Long publisherId;
-
-    @OneToOne(mappedBy = "book")
-    @ToString.Exclude
-    private BookReviewInfo bookReviewInfo;
+    private int reviewCount;
 }

@@ -2,6 +2,7 @@ package com.jaeho.springjpamysql.repository;
 
 import com.jaeho.springjpamysql.entity.Gender;
 import com.jaeho.springjpamysql.entity.User;
+import com.jaeho.springjpamysql.entity.UserHistory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +10,8 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+
+import java.util.List;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
@@ -152,6 +155,27 @@ class UserRepositoryTest {
         userRepository.save(user);
 
         userHistoryRepository.findAll().forEach(System.out::println);
+    }
 
+    @Test
+    void userRelationTest() {
+        User user = new User();
+        user.setName("test");
+        user.setEmail("test@naver.com");
+        user.setGender(Gender.MALE);
+
+        userRepository.save(user);
+
+        user.setName("test2");
+        userRepository.save(user);
+
+        user.setEmail("test2@naver.com");
+        userRepository.save(user);
+
+        List<UserHistory> result = userRepository.findByEmail("test2@naver.com").getUserHistories();
+
+        result.forEach(System.out::println);
     }
 }
+
+
