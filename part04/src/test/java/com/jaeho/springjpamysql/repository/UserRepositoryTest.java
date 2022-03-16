@@ -175,6 +175,8 @@ class UserRepositoryTest {
         List<UserHistory> result = userRepository.findByEmail("test2@naver.com").getUserHistories();
 
         result.forEach(System.out::println);
+
+        System.out.println("getUser() : " + userHistoryRepository.findAll().get(0).getUser());
     }
 }
 

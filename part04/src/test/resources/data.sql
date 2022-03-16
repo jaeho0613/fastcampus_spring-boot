@@ -1,0 +1,2 @@
+insert into user (id, gender, name, email, created_at, updated_at) values ( 1, 'MALE', 'jaeho', 'jaeho@naver.com', now(), now() );
+insert into user (id, gender, name, email, created_at, updated_at) values ( 2, 'MALE', 'jaeho', 'jaeho@gmail.com', now(), now() );

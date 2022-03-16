@@ -50,7 +50,7 @@ class BookReviewInfoRepositoryTest {
         book.setName("Jpa 초격자 패키지");
         book.setAuthorId(1L);
         book.setCategory("프로그래밍");
-        book.setPublisherId(1L);
+//        book.setPublisherId(1L);
 
         return bookRepository.save(book);
     }
