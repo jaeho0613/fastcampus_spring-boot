@@ -11,11 +11,13 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
 @SpringBootTest
+@Transactional
 class UserRepositoryTest {
 
     @Autowired
@@ -100,7 +102,7 @@ class UserRepositoryTest {
 
         userRepository.save(user);
 
-        User user2 = userRepository.findById(1).orElseThrow(RuntimeException::new);
+        User user2 = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         user2.setName("testsssssssssssssss");
 
         userRepository.save(user2);
@@ -108,7 +110,7 @@ class UserRepositoryTest {
 
     @Test
     void enumTest() {
-        User user = userRepository.findById(1).orElseThrow(RuntimeException::new);
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         user.setGender(Gender.MALE);
 
         userRepository.save(user);
@@ -132,7 +134,7 @@ class UserRepositoryTest {
 
     @Test
     void preUpdateTest() {
-        User user = userRepository.findById(1).orElseThrow(RuntimeException::new);
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
 
         System.out.println("as-is : " + user);
 

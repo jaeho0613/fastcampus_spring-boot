@@ -13,7 +13,7 @@ spring:
     hibernate:
       ddl-auto: create-drop # 서버 종료 시점, jpa 종료 시점에 따라 database 초기화 여부
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    generate-ddl: true
+    generate-ddl: true # 테이블 create, drop, alter 와 같은 명령어 수행 여부
     database: mysql
     properties:
       hibernate:
